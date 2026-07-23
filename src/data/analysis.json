@@ -1,0 +1,2396 @@
+{
+  "period": {
+    "start": "2026-05-07",
+    "end": "2026-07-21",
+    "days": 76,
+    "weeks": 10.86,
+    "bills": [
+      "2026-06-14",
+      "2026-07-14",
+      "2026-08-14"
+    ],
+    "label": "2026-05-07 a 2026-07-21 (3 faturas Nubank)"
+  },
+  "summary": {
+    "total_net_spend": 7506.41,
+    "total_purchases_gross": 7588.36,
+    "refunds_total": -81.95,
+    "purchase_count": 80,
+    "avg_ticket": 94.85,
+    "median_ticket": 53.33,
+    "mode_ticket": 118.78,
+    "stdev": 132.8,
+    "max_purchase": {
+      "amount": 963.08,
+      "title": "Cursor Ai Powered Ide",
+      "date": "2026-06-11"
+    },
+    "min_purchase": {
+      "amount": 5.9,
+      "title": "Apple.Com/Bill",
+      "date": "2026-06-15"
+    },
+    "establishments": 39,
+    "avg_per_day": 98.77,
+    "avg_per_week": 691.38,
+    "avg_per_category": 577.42,
+    "avg_monthly": 2502.14,
+    "late_fees_total": 368.0,
+    "food_total": 2451.57,
+    "transport_total": 574.71,
+    "bill_totals": {
+      "2026-06-14": {
+        "net": 3278.32,
+        "purchases": 3360.27,
+        "count": 34
+      },
+      "2026-07-14": {
+        "net": 2869.62,
+        "purchases": 2869.62,
+        "count": 29
+      },
+      "2026-08-14": {
+        "net": 1358.47,
+        "purchases": 1358.47,
+        "count": 17
+      }
+    }
+  },
+  "categories": [
+    {
+      "category": "Compras Online",
+      "total": 1525.71,
+      "count": 12,
+      "pct": 20.33,
+      "avg": 127.14
+    },
+    {
+      "category": "Assinaturas",
+      "total": 1362.39,
+      "count": 10,
+      "pct": 18.15,
+      "avg": 136.24
+    },
+    {
+      "category": "Restaurantes",
+      "total": 1124.09,
+      "count": 9,
+      "pct": 14.98,
+      "avg": 124.9
+    },
+    {
+      "category": "Mercado",
+      "total": 854.36,
+      "count": 4,
+      "pct": 11.38,
+      "avg": 213.59
+    },
+    {
+      "category": "Contas",
+      "total": 680.67,
+      "count": 15,
+      "pct": 9.07,
+      "avg": 45.38
+    },
+    {
+      "category": "Lazer",
+      "total": 536.16,
+      "count": 2,
+      "pct": 7.14,
+      "avg": 268.08
+    },
+    {
+      "category": "Delivery",
+      "total": 381.01,
+      "count": 2,
+      "pct": 5.08,
+      "avg": 190.5
+    },
+    {
+      "category": "Uber",
+      "total": 312.38,
+      "count": 18,
+      "pct": 4.16,
+      "avg": 17.35
+    },
+    {
+      "category": "Combustível",
+      "total": 262.33,
+      "count": 2,
+      "pct": 3.49,
+      "avg": 131.16
+    },
+    {
+      "category": "Saúde",
+      "total": 253.95,
+      "count": 2,
+      "pct": 3.38,
+      "avg": 126.97
+    },
+    {
+      "category": "Outros",
+      "total": 105.0,
+      "count": 1,
+      "pct": 1.4,
+      "avg": 105.0
+    },
+    {
+      "category": "Cafés",
+      "total": 92.11,
+      "count": 2,
+      "pct": 1.23,
+      "avg": 46.05
+    },
+    {
+      "category": "Farmácia",
+      "total": 16.25,
+      "count": 1,
+      "pct": 0.22,
+      "avg": 16.25
+    }
+  ],
+  "merchants": [
+    {
+      "merchant": "Cursor AI",
+      "total": 1112.44,
+      "count": 4,
+      "avg": 278.11,
+      "category": "Contas",
+      "pct": 14.82
+    },
+    {
+      "merchant": "Nip Napoli",
+      "total": 446.35,
+      "count": 1,
+      "avg": 446.35,
+      "category": "Restaurantes",
+      "pct": 5.95
+    },
+    {
+      "merchant": "Imperium Joi (Jim.com)",
+      "total": 426.82,
+      "count": 2,
+      "avg": 213.41,
+      "category": "Compras Online",
+      "pct": 5.69
+    },
+    {
+      "merchant": "LMS Distribuição",
+      "total": 420.0,
+      "count": 1,
+      "avg": 420.0,
+      "category": "Mercado",
+      "pct": 5.6
+    },
+    {
+      "merchant": "Fujioka",
+      "total": 356.34,
+      "count": 3,
+      "avg": 118.78,
+      "category": "Compras Online",
+      "pct": 4.75
+    },
+    {
+      "merchant": "Flosofia Flowershop",
+      "total": 320.0,
+      "count": 1,
+      "avg": 320.0,
+      "category": "Lazer",
+      "pct": 4.26
+    },
+    {
+      "merchant": "Uber",
+      "total": 312.38,
+      "count": 18,
+      "avg": 17.35,
+      "category": "Uber",
+      "pct": 4.16
+    },
+    {
+      "merchant": "Tina Europa",
+      "total": 279.1,
+      "count": 1,
+      "avg": 279.1,
+      "category": "Compras Online",
+      "pct": 3.72
+    },
+    {
+      "merchant": "Carne de Sol Doc",
+      "total": 269.61,
+      "count": 1,
+      "avg": 269.61,
+      "category": "Mercado",
+      "pct": 3.59
+    },
+    {
+      "merchant": "Carrefour Posto",
+      "total": 262.33,
+      "count": 2,
+      "avg": 131.16,
+      "category": "Combustível",
+      "pct": 3.49
+    },
+    {
+      "merchant": "Outback Goiânia",
+      "total": 216.83,
+      "count": 1,
+      "avg": 216.83,
+      "category": "Restaurantes",
+      "pct": 2.89
+    },
+    {
+      "merchant": "Meu Bilhete - Pecuária",
+      "total": 216.16,
+      "count": 1,
+      "avg": 216.16,
+      "category": "Lazer",
+      "pct": 2.88
+    },
+    {
+      "merchant": "iFood",
+      "total": 194.89,
+      "count": 1,
+      "avg": 194.89,
+      "category": "Delivery",
+      "pct": 2.6
+    },
+    {
+      "merchant": "Apple.com/Bill",
+      "total": 186.5,
+      "count": 5,
+      "avg": 37.3,
+      "category": "Assinaturas",
+      "pct": 2.48
+    },
+    {
+      "merchant": "Caseratto (iFood)",
+      "total": 186.12,
+      "count": 1,
+      "avg": 186.12,
+      "category": "Delivery",
+      "pct": 2.48
+    },
+    {
+      "merchant": "Puro Charme (Mercado Livre)",
+      "total": 177.97,
+      "count": 2,
+      "avg": 88.98,
+      "category": "Compras Online",
+      "pct": 2.37
+    },
+    {
+      "merchant": "Multa por fatura atrasada",
+      "total": 176.68,
+      "count": 3,
+      "avg": 58.89,
+      "category": "Contas",
+      "pct": 2.35
+    },
+    {
+      "merchant": "Juros por fatura atrasada",
+      "total": 155.32,
+      "count": 3,
+      "avg": 51.77,
+      "category": "Contas",
+      "pct": 2.07
+    },
+    {
+      "merchant": "Buteco do Allan",
+      "total": 151.97,
+      "count": 2,
+      "avg": 75.98,
+      "category": "Restaurantes",
+      "pct": 2.02
+    },
+    {
+      "merchant": "SG Serviços Inteligentes",
+      "total": 147.9,
+      "count": 2,
+      "avg": 73.95,
+      "category": "Contas",
+      "pct": 1.97
+    }
+  ],
+  "weekday": [
+    {
+      "day": "Segunda-feira",
+      "total": 556.01,
+      "count": 9
+    },
+    {
+      "day": "Terça-feira",
+      "total": 654.7,
+      "count": 8
+    },
+    {
+      "day": "Quarta-feira",
+      "total": 814.42,
+      "count": 10
+    },
+    {
+      "day": "Quinta-feira",
+      "total": 1483.83,
+      "count": 12
+    },
+    {
+      "day": "Sexta-feira",
+      "total": 1620.4,
+      "count": 18
+    },
+    {
+      "day": "Sábado",
+      "total": 1279.28,
+      "count": 8
+    },
+    {
+      "day": "Domingo",
+      "total": 1179.72,
+      "count": 15
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-05-07",
+      "daily": 245.61,
+      "cumulative": 245.61
+    },
+    {
+      "date": "2026-05-08",
+      "daily": 47.0,
+      "cumulative": 292.61
+    },
+    {
+      "date": "2026-05-09",
+      "daily": 194.89,
+      "cumulative": 487.5
+    },
+    {
+      "date": "2026-05-10",
+      "daily": 87.37,
+      "cumulative": 574.87
+    },
+    {
+      "date": "2026-05-11",
+      "daily": 136.77,
+      "cumulative": 711.64
+    },
+    {
+      "date": "2026-05-17",
+      "daily": 238.97,
+      "cumulative": 950.61
+    },
+    {
+      "date": "2026-05-19",
+      "daily": 147.9,
+      "cumulative": 1098.51
+    },
+    {
+      "date": "2026-05-21",
+      "daily": 105.0,
+      "cumulative": 1203.51
+    },
+    {
+      "date": "2026-05-22",
+      "daily": 110.85,
+      "cumulative": 1314.36
+    },
+    {
+      "date": "2026-05-23",
+      "daily": 636.16,
+      "cumulative": 1950.52
+    },
+    {
+      "date": "2026-05-24",
+      "daily": 53.39,
+      "cumulative": 2003.91
+    },
+    {
+      "date": "2026-05-26",
+      "daily": 21.04,
+      "cumulative": 2024.95
+    },
+    {
+      "date": "2026-05-27",
+      "daily": 120.0,
+      "cumulative": 2144.95
+    },
+    {
+      "date": "2026-05-29",
+      "daily": 979.76,
+      "cumulative": 3124.71
+    },
+    {
+      "date": "2026-06-03",
+      "daily": 94.99,
+      "cumulative": 3219.7
+    },
+    {
+      "date": "2026-06-05",
+      "daily": 58.62,
+      "cumulative": 3278.32
+    },
+    {
+      "date": "2026-06-07",
+      "daily": 400.85,
+      "cumulative": 3679.17
+    },
+    {
+      "date": "2026-06-08",
+      "daily": 24.88,
+      "cumulative": 3704.05
+    },
+    {
+      "date": "2026-06-10",
+      "daily": 51.08,
+      "cumulative": 3755.13
+    },
+    {
+      "date": "2026-06-11",
+      "daily": 996.78,
+      "cumulative": 4751.91
+    },
+    {
+      "date": "2026-06-15",
+      "daily": 394.36,
+      "cumulative": 5146.27
+    },
+    {
+      "date": "2026-06-16",
+      "daily": 127.16,
+      "cumulative": 5273.43
+    },
+    {
+      "date": "2026-06-17",
+      "daily": 15.48,
+      "cumulative": 5288.91
+    },
+    {
+      "date": "2026-06-18",
+      "daily": 47.19,
+      "cumulative": 5336.1
+    },
+    {
+      "date": "2026-06-19",
+      "daily": 149.38,
+      "cumulative": 5485.48
+    },
+    {
+      "date": "2026-06-25",
+      "daily": 69.87,
+      "cumulative": 5555.35
+    },
+    {
+      "date": "2026-06-28",
+      "daily": 110.28,
+      "cumulative": 5665.63
+    },
+    {
+      "date": "2026-07-03",
+      "daily": 24.99,
+      "cumulative": 5690.62
+    },
+    {
+      "date": "2026-07-04",
+      "daily": 276.11,
+      "cumulative": 5966.73
+    },
+    {
+      "date": "2026-07-05",
+      "daily": 181.21,
+      "cumulative": 6147.94
+    },
+    {
+      "date": "2026-07-07",
+      "daily": 118.78,
+      "cumulative": 6266.72
+    },
+    {
+      "date": "2026-07-08",
+      "daily": 457.07,
+      "cumulative": 6723.79
+    },
+    {
+      "date": "2026-07-10",
+      "daily": 73.35,
+      "cumulative": 6797.14
+    },
+    {
+      "date": "2026-07-15",
+      "daily": 75.8,
+      "cumulative": 6872.94
+    },
+    {
+      "date": "2026-07-16",
+      "daily": 19.38,
+      "cumulative": 6892.32
+    },
+    {
+      "date": "2026-07-17",
+      "daily": 113.6,
+      "cumulative": 7005.92
+    },
+    {
+      "date": "2026-07-18",
+      "daily": 153.02,
+      "cumulative": 7158.94
+    },
+    {
+      "date": "2026-07-19",
+      "daily": 107.65,
+      "cumulative": 7266.59
+    },
+    {
+      "date": "2026-07-21",
+      "daily": 239.82,
+      "cumulative": 7506.41
+    }
+  ],
+  "subscriptions": [
+    {
+      "name": "Google One",
+      "charges": [
+        {
+          "date": "2026-06-03",
+          "title": "Google One",
+          "amount": 24.99,
+          "bill": "2026-06-14"
+        },
+        {
+          "date": "2026-07-03",
+          "title": "Google One",
+          "amount": 24.99,
+          "bill": "2026-07-14"
+        }
+      ],
+      "total_period": 49.98,
+      "months_with_charge": 2,
+      "monthly_estimate": 24.99,
+      "annual_estimate": 299.88,
+      "iof": 0,
+      "notes": "Assinatura mensal estável de armazenamento em nuvem.",
+      "possible_savings_monthly": 0
+    },
+    {
+      "name": "Apple.com/Bill",
+      "charges": [
+        {
+          "date": "2026-05-10",
+          "title": "Apple.Com/Bill",
+          "amount": 34.9,
+          "bill": "2026-06-14"
+        },
+        {
+          "date": "2026-06-15",
+          "title": "Apple.Com/Bill",
+          "amount": 69.9,
+          "bill": "2026-07-14"
+        },
+        {
+          "date": "2026-06-15",
+          "title": "Apple.Com/Bill",
+          "amount": 5.9,
+          "bill": "2026-07-14"
+        },
+        {
+          "date": "2026-07-15",
+          "title": "Apple.Com/Bill",
+          "amount": 5.9,
+          "bill": "2026-08-14"
+        },
+        {
+          "date": "2026-07-15",
+          "title": "Apple.Com/Bill",
+          "amount": 69.9,
+          "bill": "2026-08-14"
+        }
+      ],
+      "total_period": 186.5,
+      "months_with_charge": 3,
+      "monthly_estimate": 75.8,
+      "annual_estimate": 909.6,
+      "iof": 0,
+      "notes": "Dois cobradores recorrentes (~R$ 69,90 + R$ 5,90). Em maio houve R$ 34,90. Estimativa mensal: R$ 75,80.",
+      "possible_savings_monthly": 5.9
+    },
+    {
+      "name": "Cursor AI",
+      "charges": [
+        {
+          "date": "2026-05-11",
+          "title": "IOF de \"Cursor Ai Powered Ide\"",
+          "amount": 3.91,
+          "bill": "2026-06-14"
+        },
+        {
+          "date": "2026-05-11",
+          "title": "Cursor Ai Powered Ide",
+          "amount": 111.75,
+          "bill": "2026-06-14"
+        },
+        {
+          "date": "2026-06-11",
+          "title": "Cursor Ai Powered Ide",
+          "amount": 963.08,
+          "bill": "2026-07-14"
+        },
+        {
+          "date": "2026-06-11",
+          "title": "IOF de \"Cursor Ai Powered Ide\"",
+          "amount": 33.7,
+          "bill": "2026-07-14"
+        }
+      ],
+      "total_period": 1112.44,
+      "months_with_charge": 2,
+      "monthly_estimate": 963.08,
+      "annual_estimate": 11556.96,
+      "iof": 37.61,
+      "notes": "Salto de R$ 111,75 (maio) para R$ 963,08 (junho) + IOF. Pode ser upgrade/anual. Estimativa de risco usa o maior valor observado.",
+      "possible_savings_monthly": 851.33
+    },
+    {
+      "name": "Hostinger",
+      "charges": [
+        {
+          "date": "2026-06-10",
+          "title": "DL*Hostinger - NuPay",
+          "amount": 51.08,
+          "bill": "2026-07-14"
+        }
+      ],
+      "total_period": 51.08,
+      "months_with_charge": 1,
+      "monthly_estimate": 51.08,
+      "annual_estimate": 612.96,
+      "iof": 0,
+      "notes": "Hospedagem (1 cobrança no período). Verificar se o serviço ainda é necessário.",
+      "possible_savings_monthly": 51.08
+    }
+  ],
+  "installments": [
+    {
+      "store": "Imperium Joi (Jim.com)",
+      "title": "Jim.Com* Imperium Joi - Parcela 1/2",
+      "date": "2026-05-29",
+      "bill": "2026-06-14",
+      "installment_value": 213.41,
+      "current": 1,
+      "total_parcels": 2,
+      "remaining_parcels": 1,
+      "remaining_value": 213.41,
+      "total_purchase_estimate": 426.82,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Mercado Livre",
+      "title": "Mercado*Mercadolivre - Parcela 4/5",
+      "date": "2026-05-07",
+      "bill": "2026-06-14",
+      "installment_value": 68.66,
+      "current": 4,
+      "total_parcels": 5,
+      "remaining_parcels": 1,
+      "remaining_value": 68.66,
+      "total_purchase_estimate": 343.3,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Amazon",
+      "title": "Amazon - Parcela 4/4",
+      "date": "2026-05-07",
+      "bill": "2026-06-14",
+      "installment_value": 58.17,
+      "current": 4,
+      "total_parcels": 4,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 232.68,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Fujioka",
+      "title": "Fujioka - Parcela 2/4",
+      "date": "2026-05-07",
+      "bill": "2026-06-14",
+      "installment_value": 118.78,
+      "current": 2,
+      "total_parcels": 4,
+      "remaining_parcels": 2,
+      "remaining_value": 237.56,
+      "total_purchase_estimate": 475.12,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Mercado Livre",
+      "title": "Mercado*Mercadolivre - Parcela 5/5",
+      "date": "2026-06-07",
+      "bill": "2026-07-14",
+      "installment_value": 68.66,
+      "current": 5,
+      "total_parcels": 5,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 343.3,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Imperium Joi (Jim.com)",
+      "title": "Jim.Com* Imperium Joi - Parcela 2/2",
+      "date": "2026-06-07",
+      "bill": "2026-07-14",
+      "installment_value": 213.41,
+      "current": 2,
+      "total_parcels": 2,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 426.82,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Fujioka",
+      "title": "Fujioka - Parcela 3/4",
+      "date": "2026-06-07",
+      "bill": "2026-07-14",
+      "installment_value": 118.78,
+      "current": 3,
+      "total_parcels": 4,
+      "remaining_parcels": 1,
+      "remaining_value": 118.78,
+      "total_purchase_estimate": 475.12,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Puro Charme (Mercado Livre)",
+      "title": "Mercadolivre*Purochar - Parcela 1/7",
+      "date": "2026-07-08",
+      "bill": "2026-08-14",
+      "installment_value": 57.0,
+      "current": 1,
+      "total_parcels": 7,
+      "remaining_parcels": 6,
+      "remaining_value": 342.0,
+      "total_purchase_estimate": 399.0,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Puro Charme (Mercado Livre)",
+      "title": "Mercado*Purocharme - Parcela 1/10",
+      "date": "2026-07-08",
+      "bill": "2026-08-14",
+      "installment_value": 120.97,
+      "current": 1,
+      "total_parcels": 10,
+      "remaining_parcels": 9,
+      "remaining_value": 1088.73,
+      "total_purchase_estimate": 1209.7,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Tina Europa",
+      "title": "Pg *Tinaeuropa Tinaeur - Parcela 1/12",
+      "date": "2026-07-08",
+      "bill": "2026-08-14",
+      "installment_value": 279.1,
+      "current": 1,
+      "total_parcels": 12,
+      "remaining_parcels": 11,
+      "remaining_value": 3070.1,
+      "total_purchase_estimate": 3349.2,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Fujioka",
+      "title": "Fujioka - Parcela 4/4",
+      "date": "2026-07-07",
+      "bill": "2026-08-14",
+      "installment_value": 118.78,
+      "current": 4,
+      "total_parcels": 4,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 475.12,
+      "category": "Compras Online"
+    }
+  ],
+  "installments_latest": [
+    {
+      "store": "Tina Europa",
+      "title": "Pg *Tinaeuropa Tinaeur - Parcela 1/12",
+      "date": "2026-07-08",
+      "bill": "2026-08-14",
+      "installment_value": 279.1,
+      "current": 1,
+      "total_parcels": 12,
+      "remaining_parcels": 11,
+      "remaining_value": 3070.1,
+      "total_purchase_estimate": 3349.2,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Puro Charme (Mercado Livre)",
+      "title": "Mercado*Purocharme - Parcela 1/10",
+      "date": "2026-07-08",
+      "bill": "2026-08-14",
+      "installment_value": 120.97,
+      "current": 1,
+      "total_parcels": 10,
+      "remaining_parcels": 9,
+      "remaining_value": 1088.73,
+      "total_purchase_estimate": 1209.7,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Puro Charme (Mercado Livre)",
+      "title": "Mercadolivre*Purochar - Parcela 1/7",
+      "date": "2026-07-08",
+      "bill": "2026-08-14",
+      "installment_value": 57.0,
+      "current": 1,
+      "total_parcels": 7,
+      "remaining_parcels": 6,
+      "remaining_value": 342.0,
+      "total_purchase_estimate": 399.0,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Imperium Joi (Jim.com)",
+      "title": "Jim.Com* Imperium Joi - Parcela 2/2",
+      "date": "2026-06-07",
+      "bill": "2026-07-14",
+      "installment_value": 213.41,
+      "current": 2,
+      "total_parcels": 2,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 426.82,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Mercado Livre",
+      "title": "Mercado*Mercadolivre - Parcela 5/5",
+      "date": "2026-06-07",
+      "bill": "2026-07-14",
+      "installment_value": 68.66,
+      "current": 5,
+      "total_parcels": 5,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 343.3,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Amazon",
+      "title": "Amazon - Parcela 4/4",
+      "date": "2026-05-07",
+      "bill": "2026-06-14",
+      "installment_value": 58.17,
+      "current": 4,
+      "total_parcels": 4,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 232.68,
+      "category": "Compras Online"
+    },
+    {
+      "store": "Fujioka",
+      "title": "Fujioka - Parcela 4/4",
+      "date": "2026-07-07",
+      "bill": "2026-08-14",
+      "installment_value": 118.78,
+      "current": 4,
+      "total_parcels": 4,
+      "remaining_parcels": 0,
+      "remaining_value": 0.0,
+      "total_purchase_estimate": 475.12,
+      "category": "Compras Online"
+    }
+  ],
+  "stats": {
+    "online_pct": 49.19,
+    "presencial_pct": 50.81,
+    "online_total": 3692.45,
+    "presencial_total": 3813.96,
+    "recurring_pct": 50.34,
+    "eventual_pct": 49.66,
+    "recurring_total": 3778.43,
+    "eventual_total": 3727.98,
+    "weekend_total": 2459.0,
+    "weekday_total": 5129.36,
+    "weekend_pct": 32.4
+  },
+  "impulse_candidates": [
+    {
+      "date": "2026-06-05",
+      "title": "Valori *Tutto Pane",
+      "amount": 38.72,
+      "category": "Cafés",
+      "merchant": "Tutto Pane (Valori)",
+      "reasons": [
+        "Conveniência alimentar"
+      ]
+    },
+    {
+      "date": "2026-06-05",
+      "title": "Uber - NuPay",
+      "amount": 19.9,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Butecodoallan",
+      "amount": 70.0,
+      "category": "Restaurantes",
+      "merchant": "Buteco do Allan",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada",
+        "Lazer noturno / social"
+      ]
+    },
+    {
+      "date": "2026-05-29",
+      "title": "Flosofia Flowershop",
+      "amount": 320.0,
+      "category": "Lazer",
+      "merchant": "Flosofia Flowershop",
+      "reasons": [
+        "Gasto emocional/presente"
+      ]
+    },
+    {
+      "date": "2026-05-26",
+      "title": "Uber - NuPay",
+      "amount": 21.04,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-05-24",
+      "title": "Valori *Tutto Pane",
+      "amount": 53.39,
+      "category": "Cafés",
+      "merchant": "Tutto Pane (Valori)",
+      "reasons": [
+        "Conveniência alimentar"
+      ]
+    },
+    {
+      "date": "2026-05-23",
+      "title": "Uber - NuPay",
+      "amount": 19.1,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Ceopag *Buteco do Alla",
+      "amount": 81.97,
+      "category": "Restaurantes",
+      "merchant": "Buteco do Allan",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada",
+        "Lazer noturno / social"
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": 21.86,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-05-11",
+      "title": "Uber - NuPay",
+      "amount": 21.11,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Bar do Kuka",
+      "amount": 52.47,
+      "category": "Restaurantes",
+      "merchant": "Bar do Kuka",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada",
+        "Lazer noturno / social"
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Espetinhos e Assados D",
+      "amount": 47.0,
+      "category": "Restaurantes",
+      "merchant": "Espetinhos e Assados",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada"
+      ]
+    },
+    {
+      "date": "2026-07-05",
+      "title": "Uber - NuPay",
+      "amount": 19.9,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Cabanero Tex-Mex",
+      "amount": 110.28,
+      "category": "Restaurantes",
+      "merchant": "Cabanero Tex-Mex",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada"
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 8.66,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 12.72,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 22.4,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-18",
+      "title": "Obhargastronomia",
+      "amount": 47.19,
+      "category": "Restaurantes",
+      "merchant": "Obhar Gastronomia",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada"
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Uber - NuPay",
+      "amount": 15.48,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Uber - NuPay",
+      "amount": 24.51,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Uber - NuPay",
+      "amount": 24.44,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-06-08",
+      "title": "Uber - NuPay",
+      "amount": 24.88,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-07-21",
+      "title": "Uber - NuPay",
+      "amount": 22.99,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    },
+    {
+      "date": "2026-07-18",
+      "title": "Subway",
+      "amount": 52.0,
+      "category": "Restaurantes",
+      "merchant": "Subway",
+      "reasons": [
+        "Refeição fora — candidata a substituição planejada"
+      ]
+    },
+    {
+      "date": "2026-07-16",
+      "title": "Uber - NuPay",
+      "amount": 19.38,
+      "category": "Uber",
+      "merchant": "Uber",
+      "reasons": [
+        "Corrida curta — possível modal alternativo"
+      ]
+    }
+  ],
+  "savings": {
+    "conservative": {
+      "monthly": 154.6,
+      "annual": 1855.18,
+      "actions": [
+        "Pagar fatura em dia (zerar multa/juros/IOF)",
+        "Reduzir 25% das corridas de Uber",
+        "Cancelar microassinatura Apple de R$ 5,90 se não essencial"
+      ]
+    },
+    "moderate": {
+      "monthly": 654.44,
+      "annual": 7853.22,
+      "actions": [
+        "Eliminar atrasos",
+        "Cortar 35% de restaurantes/delivery/cafés",
+        "Reduzir 40% Uber",
+        "Manter Cursor no plano mais baixo observado",
+        "Revisar pacote Apple (~R$ 20/mês)"
+      ]
+    },
+    "aggressive": {
+      "monthly": 888.99,
+      "annual": 10667.89,
+      "actions": [
+        "Zero atraso",
+        "Cortar 55% alimentação fora",
+        "Reduzir 60% Uber",
+        "Suspender/minimizar Cursor de alto valor",
+        "Enxugar Apple",
+        "Congelar compras online discricionárias"
+      ]
+    }
+  },
+  "scores": {
+    "organizacao": {
+      "score": 3.0,
+      "reason": "Atrasos em todas as 3 faturas geraram multa, juros e IOF — desorganização no fluxo de pagamento."
+    },
+    "diversificacao": {
+      "score": 6.5,
+      "reason": "Gastos em várias categorias, com concentração em assinaturas/tech, compras online e alimentação fora."
+    },
+    "controle": {
+      "score": 3.5,
+      "reason": "Desvio-padrão alto e salto do Cursor; novos parcelamentos longos aumentam o comprometimento futuro."
+    },
+    "consumo_consciente": {
+      "score": 4.5,
+      "reason": "Há gastos de valor (saúde, ferramentas), mas padrão forte de conveniência e encargos evitáveis."
+    },
+    "saude_financeira": {
+      "score": 3.0,
+      "reason": "Encargos recorrentes por atraso + novas parcelas (até 12x) pressionam o orçamento dos próximos meses."
+    }
+  },
+  "opportunities": [
+    {
+      "title": "Revisar plano Cursor AI",
+      "monthly": 851.33,
+      "annual": 10215.96,
+      "impact": "Alto",
+      "detail": "Diferença entre cobranças observadas. Confirmar se o plano alto é necessário mensalmente (ou se foi cobrança anual)."
+    },
+    {
+      "title": "Reduzir alimentação fora (rest./delivery/café) em 35%",
+      "monthly": 186.34,
+      "annual": 2236.09,
+      "impact": "Alto",
+      "detail": "Alimentação fora é maleável com planejamento semanal de refeições."
+    },
+    {
+      "title": "Eliminar atrasos de fatura",
+      "monthly": 122.67,
+      "annual": 1472.0,
+      "impact": "Crítico",
+      "detail": "Multa+juros+IOF em 3/3 faturas = desperdício puro sem benefício."
+    },
+    {
+      "title": "Otimizar mobilidade (Uber −40%)",
+      "monthly": 41.65,
+      "annual": 499.81,
+      "impact": "Médio",
+      "detail": "Muitas corridas de curto valor; misturar caminhada, ônibus ou agrupar deslocamentos."
+    },
+    {
+      "title": "Auditar Apple.com/Bill",
+      "monthly": 20.0,
+      "annual": 240.0,
+      "impact": "Médio",
+      "detail": "Há pelo menos dois cobradores. Cancelar o de R$ 5,90 e revisar o de R$ 69,90."
+    }
+  ],
+  "transactions": [
+    {
+      "date": "2026-06-05",
+      "title": "Valori *Tutto Pane",
+      "amount": 38.72,
+      "bill": "2026-06-14",
+      "category": "Cafés",
+      "merchant": "Tutto Pane (Valori)",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-05",
+      "title": "Uber - NuPay",
+      "amount": 19.9,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Google One",
+      "amount": 24.99,
+      "bill": "2026-06-14",
+      "category": "Assinaturas",
+      "merchant": "Google One",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Butecodoallan",
+      "amount": 70.0,
+      "bill": "2026-06-14",
+      "category": "Restaurantes",
+      "merchant": "Buteco do Allan",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-29",
+      "title": "Jim.Com* Imperium Joi - Parcela 1/2",
+      "amount": 213.41,
+      "bill": "2026-06-14",
+      "category": "Compras Online",
+      "merchant": "Imperium Joi (Jim.com)",
+      "meta": false,
+      "installment": [
+        1,
+        2
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-29",
+      "title": "Nip Napoli",
+      "amount": 446.35,
+      "bill": "2026-06-14",
+      "category": "Restaurantes",
+      "merchant": "Nip Napoli",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-29",
+      "title": "Flosofia Flowershop",
+      "amount": 320.0,
+      "bill": "2026-06-14",
+      "category": "Lazer",
+      "merchant": "Flosofia Flowershop",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-27",
+      "title": "Duarte Haircut",
+      "amount": 120.0,
+      "bill": "2026-06-14",
+      "category": "Saúde",
+      "merchant": "Duarte Haircut",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-26",
+      "title": "Uber - NuPay",
+      "amount": 21.04,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-24",
+      "title": "Valori *Tutto Pane",
+      "amount": 53.39,
+      "bill": "2026-06-14",
+      "category": "Cafés",
+      "merchant": "Tutto Pane (Valori)",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-23",
+      "title": "Uber - NuPay",
+      "amount": 19.1,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-23",
+      "title": "Uber - NuPay",
+      "amount": -19.1,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-23",
+      "title": "Meu Bilhete - Pecuaria",
+      "amount": 216.16,
+      "bill": "2026-06-14",
+      "category": "Lazer",
+      "merchant": "Meu Bilhete - Pecuária",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-23",
+      "title": "Lmsdistribuicao",
+      "amount": 420.0,
+      "bill": "2026-06-14",
+      "category": "Mercado",
+      "merchant": "LMS Distribuição",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": 30.99,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Ceopag *Buteco do Alla",
+      "amount": 81.97,
+      "bill": "2026-06-14",
+      "category": "Restaurantes",
+      "merchant": "Buteco do Allan",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": 38.88,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": 21.86,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": -38.88,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": -21.86,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Uber - NuPay",
+      "amount": -2.11,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-21",
+      "title": "Solution",
+      "amount": 105.0,
+      "bill": "2026-06-14",
+      "category": "Outros",
+      "merchant": "Solution",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-19",
+      "title": "Sg Servicos Inteligent",
+      "amount": 135.0,
+      "bill": "2026-06-14",
+      "category": "Contas",
+      "merchant": "SG Serviços Inteligentes",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-19",
+      "title": "Sg Servicos Inteligent",
+      "amount": 12.9,
+      "bill": "2026-06-14",
+      "category": "Contas",
+      "merchant": "SG Serviços Inteligentes",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-17",
+      "title": "Multa por fatura atrasada",
+      "amount": 53.26,
+      "bill": "2026-06-14",
+      "category": "Contas",
+      "merchant": "Multa por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-17",
+      "title": "Juros por fatura atrasada",
+      "amount": 40.99,
+      "bill": "2026-06-14",
+      "category": "Contas",
+      "merchant": "Juros por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-17",
+      "title": "IOF por fatura atrasada",
+      "amount": 10.77,
+      "bill": "2026-06-14",
+      "category": "Contas",
+      "merchant": "IOF por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-17",
+      "title": "Pagamento recebido",
+      "amount": -2653.0,
+      "bill": "2026-06-14",
+      "category": "Meta",
+      "merchant": "Pagamento recebido",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-17",
+      "title": "Espacolaser",
+      "amount": 133.95,
+      "bill": "2026-06-14",
+      "category": "Saúde",
+      "merchant": "Espaçolaser",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-14",
+      "title": "Valor pendente do mês anterior",
+      "amount": 2653.0,
+      "bill": "2026-06-14",
+      "category": "Meta",
+      "merchant": "Valor pendente do mês anterior",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-12",
+      "title": "Depósito de Confiança de \"Ppro*Linkedin\"",
+      "amount": -1799.88,
+      "bill": "2026-06-14",
+      "category": "Meta",
+      "merchant": "Depósito de Confiança de \"Ppro*Linkedin\"",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-11",
+      "title": "Uber - NuPay",
+      "amount": 21.11,
+      "bill": "2026-06-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-11",
+      "title": "IOF de \"Cursor Ai Powered Ide\"",
+      "amount": 3.91,
+      "bill": "2026-06-14",
+      "category": "Contas",
+      "merchant": "Cursor AI",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-11",
+      "title": "Cursor Ai Powered Ide",
+      "amount": 111.75,
+      "bill": "2026-06-14",
+      "category": "Assinaturas",
+      "merchant": "Cursor AI",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Apple.Com/Bill",
+      "amount": 34.9,
+      "bill": "2026-06-14",
+      "category": "Assinaturas",
+      "merchant": "Apple.com/Bill",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Bar do Kuka",
+      "amount": 52.47,
+      "bill": "2026-06-14",
+      "category": "Restaurantes",
+      "merchant": "Bar do Kuka",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-09",
+      "title": "iFood - NuPay",
+      "amount": 194.89,
+      "bill": "2026-06-14",
+      "category": "Delivery",
+      "merchant": "iFood",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Espetinhos e Assados D",
+      "amount": 47.0,
+      "bill": "2026-06-14",
+      "category": "Restaurantes",
+      "merchant": "Espetinhos e Assados",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Mercado*Mercadolivre - Parcela 4/5",
+      "amount": 68.66,
+      "bill": "2026-06-14",
+      "category": "Compras Online",
+      "merchant": "Mercado Livre",
+      "meta": false,
+      "installment": [
+        4,
+        5
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Amazon - Parcela 4/4",
+      "amount": 58.17,
+      "bill": "2026-06-14",
+      "category": "Compras Online",
+      "merchant": "Amazon",
+      "meta": false,
+      "installment": [
+        4,
+        4
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Fujioka - Parcela 2/4",
+      "amount": 118.78,
+      "bill": "2026-06-14",
+      "category": "Compras Online",
+      "merchant": "Fujioka",
+      "meta": false,
+      "installment": [
+        2,
+        4
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-05",
+      "title": "Uber - NuPay",
+      "amount": 19.9,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-05",
+      "title": "Carrefour Posto Pgs",
+      "amount": 161.31,
+      "bill": "2026-07-14",
+      "category": "Combustível",
+      "merchant": "Carrefour Posto",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-04",
+      "title": "Decathlon",
+      "amount": 89.99,
+      "bill": "2026-07-14",
+      "category": "Compras Online",
+      "merchant": "Decathlon",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-04",
+      "title": "Ifd*Caseratto - Marist",
+      "amount": 186.12,
+      "bill": "2026-07-14",
+      "category": "Delivery",
+      "merchant": "Caseratto (iFood)",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-03",
+      "title": "Google One",
+      "amount": 24.99,
+      "bill": "2026-07-14",
+      "category": "Assinaturas",
+      "merchant": "Google One",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Cabanero Tex-Mex",
+      "amount": 110.28,
+      "bill": "2026-07-14",
+      "category": "Restaurantes",
+      "merchant": "Cabanero Tex-Mex",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 8.66,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 26.09,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 12.72,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Uber - NuPay",
+      "amount": 22.4,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Multa por fatura atrasada",
+      "amount": 65.81,
+      "bill": "2026-07-14",
+      "category": "Contas",
+      "merchant": "Multa por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Juros por fatura atrasada",
+      "amount": 69.99,
+      "bill": "2026-07-14",
+      "category": "Contas",
+      "merchant": "Juros por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-19",
+      "title": "IOF por fatura atrasada",
+      "amount": 13.58,
+      "bill": "2026-07-14",
+      "category": "Contas",
+      "merchant": "IOF por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-19",
+      "title": "Pagamento recebido",
+      "amount": -3278.34,
+      "bill": "2026-07-14",
+      "category": "Meta",
+      "merchant": "Pagamento recebido",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-18",
+      "title": "Obhargastronomia",
+      "amount": 47.19,
+      "bill": "2026-07-14",
+      "category": "Restaurantes",
+      "merchant": "Obhar Gastronomia",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Uber - NuPay",
+      "amount": 15.48,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Zpyreceitafederal",
+      "amount": 100.51,
+      "bill": "2026-07-14",
+      "category": "Contas",
+      "merchant": "Zapay Receita Federal",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Zpyreceitafederal",
+      "amount": 26.65,
+      "bill": "2026-07-14",
+      "category": "Contas",
+      "merchant": "Zapay Receita Federal",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Uber - NuPay",
+      "amount": 24.51,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Mp *Carnedesoldoc",
+      "amount": 269.61,
+      "bill": "2026-07-14",
+      "category": "Mercado",
+      "merchant": "Carne de Sol Doc",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Uber - NuPay",
+      "amount": 24.44,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Apple.Com/Bill",
+      "amount": 69.9,
+      "bill": "2026-07-14",
+      "category": "Assinaturas",
+      "merchant": "Apple.com/Bill",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Apple.Com/Bill",
+      "amount": 5.9,
+      "bill": "2026-07-14",
+      "category": "Assinaturas",
+      "merchant": "Apple.com/Bill",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Valor pendente do mês anterior",
+      "amount": 3278.33,
+      "bill": "2026-07-14",
+      "category": "Meta",
+      "merchant": "Valor pendente do mês anterior",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-06-11",
+      "title": "Cursor Ai Powered Ide",
+      "amount": 963.08,
+      "bill": "2026-07-14",
+      "category": "Assinaturas",
+      "merchant": "Cursor AI",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-11",
+      "title": "IOF de \"Cursor Ai Powered Ide\"",
+      "amount": 33.7,
+      "bill": "2026-07-14",
+      "category": "Contas",
+      "merchant": "Cursor AI",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-10",
+      "title": "DL*Hostinger - NuPay",
+      "amount": 51.08,
+      "bill": "2026-07-14",
+      "category": "Assinaturas",
+      "merchant": "Hostinger",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-08",
+      "title": "Uber - NuPay",
+      "amount": 24.88,
+      "bill": "2026-07-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-07",
+      "title": "Mercado*Mercadolivre - Parcela 5/5",
+      "amount": 68.66,
+      "bill": "2026-07-14",
+      "category": "Compras Online",
+      "merchant": "Mercado Livre",
+      "meta": false,
+      "installment": [
+        5,
+        5
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-07",
+      "title": "Jim.Com* Imperium Joi - Parcela 2/2",
+      "amount": 213.41,
+      "bill": "2026-07-14",
+      "category": "Compras Online",
+      "merchant": "Imperium Joi (Jim.com)",
+      "meta": false,
+      "installment": [
+        2,
+        2
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-06-07",
+      "title": "Fujioka - Parcela 3/4",
+      "amount": 118.78,
+      "bill": "2026-07-14",
+      "category": "Compras Online",
+      "merchant": "Fujioka",
+      "meta": false,
+      "installment": [
+        3,
+        4
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-21",
+      "title": "Uber - NuPay",
+      "amount": 22.99,
+      "bill": "2026-08-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-21",
+      "title": "Outback Goiania",
+      "amount": 216.83,
+      "bill": "2026-08-14",
+      "category": "Restaurantes",
+      "merchant": "Outback Goiânia",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-19",
+      "title": "Distribuidor Louvada G",
+      "amount": 91.4,
+      "bill": "2026-08-14",
+      "category": "Mercado",
+      "merchant": "Distribuidor Louvada G",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-19",
+      "title": "Drogasil",
+      "amount": 16.25,
+      "bill": "2026-08-14",
+      "category": "Farmácia",
+      "merchant": "Drogasil",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-18",
+      "title": "Carrefour Posto Pgs",
+      "amount": 101.02,
+      "bill": "2026-08-14",
+      "category": "Combustível",
+      "merchant": "Carrefour Posto",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-18",
+      "title": "Subway",
+      "amount": 52.0,
+      "bill": "2026-08-14",
+      "category": "Restaurantes",
+      "merchant": "Subway",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-17",
+      "title": "Pagamento recebido",
+      "amount": -2869.65,
+      "bill": "2026-08-14",
+      "category": "Meta",
+      "merchant": "Pagamento recebido",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-17",
+      "title": "IOF por fatura atrasada",
+      "amount": 11.65,
+      "bill": "2026-08-14",
+      "category": "Contas",
+      "merchant": "IOF por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-17",
+      "title": "Juros por fatura atrasada",
+      "amount": 44.34,
+      "bill": "2026-08-14",
+      "category": "Contas",
+      "merchant": "Juros por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-17",
+      "title": "Multa por fatura atrasada",
+      "amount": 57.61,
+      "bill": "2026-08-14",
+      "category": "Contas",
+      "merchant": "Multa por fatura atrasada",
+      "meta": false,
+      "installment": null,
+      "channel": "presencial",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-16",
+      "title": "Uber - NuPay",
+      "amount": 19.38,
+      "bill": "2026-08-14",
+      "category": "Uber",
+      "merchant": "Uber",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-15",
+      "title": "Apple.Com/Bill",
+      "amount": 5.9,
+      "bill": "2026-08-14",
+      "category": "Assinaturas",
+      "merchant": "Apple.com/Bill",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-15",
+      "title": "Apple.Com/Bill",
+      "amount": 69.9,
+      "bill": "2026-08-14",
+      "category": "Assinaturas",
+      "merchant": "Apple.com/Bill",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-14",
+      "title": "Valor pendente do mês anterior",
+      "amount": 2869.64,
+      "bill": "2026-08-14",
+      "category": "Meta",
+      "merchant": "Valor pendente do mês anterior",
+      "meta": true,
+      "installment": null,
+      "channel": "meta",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-10",
+      "title": "Supermercado Pro Brazi",
+      "amount": 73.35,
+      "bill": "2026-08-14",
+      "category": "Mercado",
+      "merchant": "Supermercado Pro Brazil",
+      "meta": false,
+      "installment": null,
+      "channel": "online",
+      "recurring": false
+    },
+    {
+      "date": "2026-07-08",
+      "title": "Mercadolivre*Purochar - Parcela 1/7",
+      "amount": 57.0,
+      "bill": "2026-08-14",
+      "category": "Compras Online",
+      "merchant": "Puro Charme (Mercado Livre)",
+      "meta": false,
+      "installment": [
+        1,
+        7
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-08",
+      "title": "Mercado*Purocharme - Parcela 1/10",
+      "amount": 120.97,
+      "bill": "2026-08-14",
+      "category": "Compras Online",
+      "merchant": "Puro Charme (Mercado Livre)",
+      "meta": false,
+      "installment": [
+        1,
+        10
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-08",
+      "title": "Pg *Tinaeuropa Tinaeur - Parcela 1/12",
+      "amount": 279.1,
+      "bill": "2026-08-14",
+      "category": "Compras Online",
+      "merchant": "Tina Europa",
+      "meta": false,
+      "installment": [
+        1,
+        12
+      ],
+      "channel": "online",
+      "recurring": true
+    },
+    {
+      "date": "2026-07-07",
+      "title": "Fujioka - Parcela 4/4",
+      "amount": 118.78,
+      "bill": "2026-08-14",
+      "category": "Compras Online",
+      "merchant": "Fujioka",
+      "meta": false,
+      "installment": [
+        4,
+        4
+      ],
+      "channel": "online",
+      "recurring": true
+    }
+  ]
+}
