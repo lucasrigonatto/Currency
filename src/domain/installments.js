@@ -50,7 +50,13 @@ export function findMatchingGroup(groups, candidate) {
 export function remainingSchedule(group, postedTransactions) {
   const posted = postedTransactions.filter((t) => t.installmentGroupId === group.id && t.status !== 'ignored');
   const postedNumbers = new Set(posted.map((t) => t.installmentCurrent));
-  const startDate = group.startDate || installmentStartDate(posted[0]?.date, posted[0]?.installmentCurrent || 1);
+  const observedPaid = Math.max(
+    Number(group.paidThrough) || 0,
+    ...posted.map((t) => Number(t.installmentCurrent) || 0),
+    0,
+  );
+  const anchor = posted.slice().sort((a, b) => (a.installmentCurrent || 0) - (b.installmentCurrent || 0))[0];
+  const startDate = group.startDate || installmentStartDate(anchor?.date, anchor?.installmentCurrent || 1);
   const items = [];
   for (let i = 1; i <= group.totalInstallments; i += 1) {
     const date = installmentDateFor(startDate, i);
@@ -59,7 +65,7 @@ export function remainingSchedule(group, postedTransactions) {
       date,
       month: monthKey(date),
       amountCents: group.installmentAmountCents,
-      posted: postedNumbers.has(i),
+      posted: postedNumbers.has(i) || i <= observedPaid,
     });
   }
   const paidCount = items.filter((i) => i.posted).length;

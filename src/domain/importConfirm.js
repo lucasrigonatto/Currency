@@ -30,10 +30,14 @@ export function prepareConfirmPayload(rows, { importId, accountId, installmentGr
           installmentAmountCents: Math.abs(row.amountCents),
           totalAmountCents: Math.abs(row.amountCents) * row.installmentTotal,
           startDate: installmentStartDate(row.date, row.installmentCurrent || 1),
+          paidThrough: row.installmentCurrent || 1,
           createdAt: new Date().toISOString(),
         };
         groups.push(group);
         newGroups.push(group);
+      } else {
+        group.paidThrough = Math.max(group.paidThrough || 0, row.installmentCurrent || 0);
+        if (!newGroups.some((g) => g.id === group.id)) newGroups.push(group);
       }
       installmentGroupId = group.id;
     }

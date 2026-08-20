@@ -43,6 +43,24 @@ test('installment remaining value uses each month once', () => {
   expect(installmentStartDate('2026-08-08', 3)).toBe('2026-06-08');
 });
 
+test('seeing parcela 3/10 infers 1 and 2 already paid', () => {
+  const group = {
+    id: 'g1',
+    totalInstallments: 10,
+    installmentAmountCents: 36000,
+    startDate: '2026-06-08',
+    paidThrough: 3,
+  };
+  const posted = [
+    { id: 't3', installmentGroupId: 'g1', installmentCurrent: 3, status: 'posted', date: '2026-08-08' },
+  ];
+  const schedule = remainingSchedule(group, posted);
+  expect(schedule.paidCount).toBe(3);
+  expect(schedule.remainingCount).toBe(7);
+  expect(schedule.remainingCents).toBe(252000);
+  expect(schedule.next.month).toBe('2026-09');
+});
+
 test('rule-based categorization is deterministic', () => {
   const rules = [
     { id: '1', pattern: 'uber', categoryId: 'transportation', subcategoryId: 'transportation-rides', enabled: true, priority: 0 },
