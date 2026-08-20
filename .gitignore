@@ -11,6 +11,9 @@
 # production
 /build
 
+# copied from pdfjs-dist on install
+/public/pdf.worker.min.js
+
 # misc
 .DS_Store
 .env.local

@@ -1,20 +1,27 @@
 {
-  "name": "currency-exchange",
+  "name": "personal-finance-tracker",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal finance tracker with local-first statement import, installments, and cash-flow projection.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "dexie": "^4.4.5",
+    "pdfjs-dist": "3.11.174",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "6",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.0"
+    "recharts": "^3.10.1",
+    "web-vitals": "^2.1.0",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
+    "postinstall": "node scripts/copy-pdf-worker.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --forceExit",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.5"
   }
 }
