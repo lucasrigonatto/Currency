@@ -106,6 +106,28 @@ test('legitimate identical purchases can be confirmed with allowDuplicate', asyn
   expect(await db.transactions.count()).toBe(2);
 });
 
+test('legacy installment groups without start month still match a unique purchase', () => {
+  const row = { ...installment({ date: '2026-08-08', description: 'Mercadolivre*Notebook - Parcela 3/10' }), id: 'legacy-1', include: true };
+  const payload = prepareConfirmPayload([row], {
+    importId: 'imp-legacy',
+    accountId: 'card-nubank',
+    installmentGroups: [{
+      id: 'g-legacy',
+      matchKey: 'card-nubank|mercadolivrenotebook|10|10000',
+      merchant: 'Mercadolivre*Notebook',
+      accountId: 'card-nubank',
+      totalInstallments: 10,
+      installmentAmountCents: 10000,
+      paidThrough: 2,
+    }],
+    transactions: [],
+  });
+  expect(payload.groupsToSave).toHaveLength(1);
+  expect(payload.groupsToSave[0].id).toBe('g-legacy');
+  expect(payload.groupsToSave[0].matchKey).toContain('2026-06');
+  expect(payload.transactionsToAdd[0].installmentGroupId).toBe('g-legacy');
+});
+
 test('two equal installment purchases with different start months stay separate groups', () => {
   const june = { ...installment({ date: '2026-06-08', description: 'Mercadolivre*Notebook - Parcela 1/10' }), id: 'j1', include: true };
   const july = { ...installment({ date: '2026-07-08', description: 'Mercadolivre*Notebook - Parcela 1/10' }), id: 'j2', include: true };

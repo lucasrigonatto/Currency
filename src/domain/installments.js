@@ -61,10 +61,8 @@ export function findMatchingGroup(groups, candidate) {
   const exact = (groups || []).find((g) => g.matchKey === key || g.purchaseKey === key);
   if (exact) return exact;
   const prefix = groupKeyPrefix(candidate);
-  const matches = (groups || []).filter(
-    (g) => g.matchKey === prefix || String(g.matchKey || '').startsWith(`${prefix}|`),
-  );
-  if (matches.length === 1) return matches[0];
+  const legacy = (groups || []).filter((g) => g.matchKey === prefix);
+  if (legacy.length === 1) return legacy[0];
   return null;
 }
 
