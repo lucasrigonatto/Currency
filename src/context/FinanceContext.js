@@ -5,7 +5,8 @@ import { currentMonthKey } from '../lib/dates';
 import { parseImportFile } from '../import/pipeline';
 import { detectRecurringFlags, statementPeriod } from '../domain/importConfirm';
 import { confirmImportInDb, rollbackImportInDb } from '../domain/importPersistence';
-import { findDuplicateImport } from '../domain/duplicates';
+import { annotateDuplicates, findDuplicateImport } from '../domain/duplicates';
+import { saveTransactionInDb, deleteTransactionInDb } from '../domain/transactionPersistence';
 import { suggestedRuleFromCorrection } from '../domain/categorize';
 import { detectRecurringCandidates } from '../domain/recurring';
 import { categoryLookup } from '../domain/aggregates';
@@ -63,33 +64,7 @@ export function FinanceProvider({ children }) {
 
   const saveTransaction = useCallback(
     async (input) => {
-      const now = new Date().toISOString();
-      const row = {
-        id: input.id || createId(),
-        date: input.date,
-        description: input.description,
-        merchant: input.merchant || input.description,
-        amountCents: Number(input.amountCents),
-        type: input.type || 'expense',
-        categoryId: input.categoryId || 'other',
-        subcategoryId: input.subcategoryId || null,
-        paymentMethod: input.paymentMethod || 'other',
-        accountId: input.accountId || null,
-        installmentCurrent: input.installmentCurrent || null,
-        installmentTotal: input.installmentTotal || null,
-        installmentGroupId: input.installmentGroupId || null,
-        isRecurring: Boolean(input.isRecurring),
-        recurrenceType: input.recurrenceType || null,
-        notes: input.notes || '',
-        source: input.source || 'manual',
-        status: input.status || 'posted',
-        isStatementMeta: Boolean(input.isStatementMeta),
-        fingerprint: input.fingerprint || null,
-        importId: input.importId || null,
-        createdAt: input.createdAt || now,
-        updatedAt: now,
-      };
-      await db.transactions.put(row);
+      const row = await saveTransactionInDb(db, input);
       await refresh();
       return row;
     },
@@ -98,7 +73,7 @@ export function FinanceProvider({ children }) {
 
   const deleteTransaction = useCallback(
     async (id) => {
-      await db.transactions.delete(id);
+      await deleteTransactionInDb(db, id);
       await refresh();
     },
     [refresh],
@@ -251,7 +226,7 @@ export function FinanceProvider({ children }) {
         categoryId: input.categoryId || null,
         subcategoryId: input.subcategoryId || null,
         accountId: input.accountId || null,
-        startMonth: input.startMonth || null,
+        startMonth: input.startMonth || (input.date ? input.date.slice(0, 7) : null) || currentMonthKey(),
         endMonth: input.endMonth || null,
         isActive: input.isActive !== false,
         createdAt: input.createdAt || now,
@@ -281,11 +256,15 @@ export function FinanceProvider({ children }) {
         fallbackYear: Number(month.slice(0, 4)),
       });
       const duplicateFile = findDuplicateImport(snapshot.imports, parsed.contentHash);
-      const rows = detectRecurringFlags(parsed.rows, snapshot.recurring).map((row) => ({
-        ...row,
-        id: createId(),
-        importId: null,
-      }));
+      const existing = snapshot.transactions.filter((t) => t.status !== 'ignored');
+      const rows = annotateDuplicates(
+        detectRecurringFlags(parsed.rows, snapshot.recurring).map((row) => ({
+          ...row,
+          id: createId(),
+          importId: null,
+        })),
+        existing,
+      );
       const now = new Date().toISOString();
       const period = statementPeriod(rows);
       const importId = createId();
@@ -318,21 +297,29 @@ export function FinanceProvider({ children }) {
 
   const updateImportRow = useCallback(
     async (row, patch = {}) => {
+      const existing = snapshot.transactions.filter((t) => t.status !== 'ignored');
       const next = revalidateReviewRow(row, patch, {
         rules: snapshot.rules,
-        existingTransactions: snapshot.transactions.filter((t) => t.status !== 'ignored'),
+        existingTransactions: existing,
         accountId: row.accountId,
       });
-      await db.importRows.put({ ...next, updatedAt: new Date().toISOString() });
+      const siblings = snapshot.importRows
+        .filter((item) => item.importId === row.importId)
+        .map((item) => (item.id === next.id ? next : item));
+      const annotated = annotateDuplicates(siblings, existing).map((item) => ({
+        ...item,
+        updatedAt: new Date().toISOString(),
+      }));
+      await db.importRows.bulkPut(annotated);
       await refresh();
-      return next;
+      return annotated.find((item) => item.id === next.id) || next;
     },
-    [refresh, snapshot.rules, snapshot.transactions],
+    [refresh, snapshot.importRows, snapshot.rules, snapshot.transactions],
   );
 
   const confirmImport = useCallback(
-    async (importId) => {
-      const payload = await confirmImportInDb(db, importId);
+    async (importId, options = {}) => {
+      const payload = await confirmImportInDb(db, importId, options);
       await refresh();
       return payload;
     },

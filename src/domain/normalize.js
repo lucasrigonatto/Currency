@@ -115,12 +115,15 @@ export function revalidateReviewRow(row, patch, context) {
     normalized.categoryConfidence = 'manual';
   }
 
+  const allowDuplicate = Boolean(patch.allowDuplicate ?? merged.allowDuplicate);
   let include;
   if (normalized.parseErrors.length) {
     include = false;
+  } else if (normalized.isStatementMeta) {
+    include = false;
   } else if (patch.include !== undefined) {
-    include = Boolean(patch.include) && !normalized.isStatementMeta && normalized.duplicateKind !== 'exact';
-  } else if (normalized.isStatementMeta || normalized.duplicateKind === 'exact') {
+    include = Boolean(patch.include) && (allowDuplicate || normalized.duplicateKind !== 'exact');
+  } else if (normalized.duplicateKind === 'exact' && !allowDuplicate) {
     include = false;
   } else {
     include = merged.include !== false;
@@ -132,6 +135,7 @@ export function revalidateReviewRow(row, patch, context) {
     importId: row.importId,
     status: include ? 'pending' : 'skipped',
     include,
+    allowDuplicate,
     amountText,
     notes: merged.notes || '',
   };

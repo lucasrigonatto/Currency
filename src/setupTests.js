@@ -18,3 +18,8 @@ if (typeof window !== 'undefined' && !window.crypto?.randomUUID) {
   });
 }
 
+afterAll(async () => {
+  const { db } = await import('./db');
+  if (db.isOpen()) await db.close();
+});
+

@@ -17,8 +17,8 @@ export default function ProjectionPage() {
   return (
     <>
       <p className="page-lead">
-        Projeção mensal de caixa. Distingue despesas já confirmadas, recorrentes, parcelas e itens lançados manualmente no planejamento.
-        Não trate estes números como valores garantidos.
+        Projeção mensal de caixa: receitas e despesas já confirmadas no mês, o que ainda é esperado, e compromissos futuros.
+        Uma recorrência já lançada não entra de novo no esperado. Não trate estes números como valores garantidos.
       </p>
       <div className="panel">
         <div className="table-wrap">

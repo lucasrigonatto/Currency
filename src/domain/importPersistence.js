@@ -1,7 +1,8 @@
 import { prepareConfirmPayload } from './importConfirm';
+import { annotateDuplicates, findDuplicateImport, ImportConfirmError } from './duplicates';
 import { syncGroupsAfterRemovedTransactions } from './installments';
 
-export async function confirmImportInDb(database, importId) {
+export async function confirmImportInDb(database, importId, options = {}) {
   return database.transaction(
     'rw',
     database.imports,
@@ -18,10 +19,42 @@ export async function confirmImportInDb(database, importId) {
         throw new Error('Esta importação não está em revisão.');
       }
 
+      const allowDuplicateFile = Boolean(options.allowDuplicateFile || imp.allowDuplicateFile);
+      const imports = await database.imports.toArray();
+      const duplicateFile = findDuplicateImport(
+        imports.filter((item) => item.id !== importId),
+        imp.contentHash,
+      );
+      if (duplicateFile && !allowDuplicateFile) {
+        throw new ImportConfirmError(
+          'Este arquivo já foi importado e confirmado. Marque “Importar mesmo assim” para continuar.',
+          'DUPLICATE_FILE',
+          { duplicateImportId: duplicateFile.id },
+        );
+      }
+
       const staged = await database.importRows.where('importId').equals(importId).toArray();
       const groups = await database.installmentGroups.toArray();
       const transactions = await database.transactions.toArray();
-      const payload = prepareConfirmPayload(staged, {
+      const livePosted = transactions.filter((tx) => tx.status !== 'ignored');
+      const annotated = annotateDuplicates(staged, livePosted);
+
+      const claimed = staged.filter((row) => row.include);
+      const included = annotated.filter((row) => row.include);
+      const blocked = annotated.filter(
+        (row) => row.duplicateKind === 'exact' && !row.allowDuplicate && claimed.some((c) => c.id === row.id && c.include),
+      );
+      if (!included.length && blocked.length) {
+        throw new ImportConfirmError(
+          'Todas as linhas selecionadas já existem. Marque “É outra compra” nas duplicatas legítimas.',
+          'DUPLICATE_ROWS',
+          { count: blocked.length },
+        );
+      }
+
+      if (annotated.length) await database.importRows.bulkPut(annotated);
+
+      const payload = prepareConfirmPayload(annotated, {
         importId,
         accountId: imp.accountId,
         installmentGroups: groups,
@@ -38,8 +71,10 @@ export async function confirmImportInDb(database, importId) {
         totalCents: payload.transactionsToAdd.reduce((s, t) => s + t.amountCents, 0),
         confirmedAt: now,
         updatedAt: now,
+        allowDuplicateFile,
+        skippedDuplicates: blocked.length,
       });
-      return payload;
+      return { ...payload, skippedDuplicates: blocked.length };
     },
   );
 }

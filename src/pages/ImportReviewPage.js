@@ -12,6 +12,8 @@ export default function ImportReviewPage() {
   const navigate = useNavigate();
   const imp = imports.find((i) => i.id === importId);
   const [busy, setBusy] = useState(false);
+  const [allowDuplicateFile, setAllowDuplicateFile] = useState(Boolean(imp?.allowDuplicateFile));
+  const [fileOverrideNeeded, setFileOverrideNeeded] = useState(Boolean(imp?.duplicateOf));
   const rows = useMemo(() => importRows.filter((r) => r.importId === importId), [importRows, importId]);
   const summary = summarizeReview(rows);
 
@@ -24,11 +26,17 @@ export default function ImportReviewPage() {
   async function confirm() {
     setBusy(true);
     try {
-      const result = await confirmImport(importId);
-      showNotice(`${result.transactionsToAdd.length} transações gravadas.`);
+      const result = await confirmImport(importId, { allowDuplicateFile });
+      const skipped = result.skippedDuplicates ? ` (${result.skippedDuplicates} duplicata(s) ignorada(s))` : '';
+      showNotice(`${result.transactionsToAdd.length} transações gravadas${skipped}.`);
       navigate('/');
     } catch (err) {
-      showNotice(err.message || 'Falha ao confirmar');
+      if (err.code === 'DUPLICATE_FILE') {
+        setFileOverrideNeeded(true);
+        showNotice(err.message || 'Este arquivo já foi confirmado.');
+      } else {
+        showNotice(err.message || 'Falha ao confirmar');
+      }
     } finally {
       setBusy(false);
     }
@@ -38,6 +46,7 @@ export default function ImportReviewPage() {
     <>
       <p className="page-lead">
         Revise antes de salvar. Corrija data, descrição e valor; linhas inválidas não entram na confirmação.
+        Duplicatas são recalculadas no momento de confirmar.
       </p>
       <div className="metrics">
         <div className="metric"><span className="metric__label">Arquivo</span><strong className="metric__value" style={{ fontSize: '1rem' }}>{imp.filename}</strong></div>
@@ -47,7 +56,9 @@ export default function ImportReviewPage() {
         <div className="metric"><span className="metric__label">Parcelas</span><strong className="metric__value">{summary.installments}</strong></div>
         <div className="metric"><span className="metric__label">Não lidas</span><strong className="metric__value">{summary.unparsed}</strong></div>
       </div>
-      {imp.duplicateOf && <p className="tag tag--warn">Arquivo idêntico a uma importação já confirmada.</p>}
+      {(imp.duplicateOf || fileOverrideNeeded) && (
+        <p className="tag tag--warn">Arquivo idêntico a uma importação já confirmada.</p>
+      )}
       {(imp.warnings || []).map((w) => <p key={w} className="tag tag--warn">{w}</p>)}
 
       <div className="panel">
@@ -71,7 +82,10 @@ export default function ImportReviewPage() {
                       type="checkbox"
                       checked={Boolean(row.include)}
                       disabled={row.parseErrors?.length > 0}
-                      onChange={(e) => patch(row, { include: e.target.checked })}
+                      onChange={(e) => patch(row, {
+                        include: e.target.checked,
+                        allowDuplicate: Boolean(row.allowDuplicate || (e.target.checked && row.duplicateKind === 'exact')),
+                      })}
                     />
                   </td>
                   <td>
@@ -101,11 +115,21 @@ export default function ImportReviewPage() {
                   </td>
                   <td>
                     {row.parseErrors?.map((err) => <div key={err} className="tag tag--bad">{err}</div>)}
-                    {row.duplicateKind && <div className="tag tag--warn">Duplicata {row.duplicateKind}</div>}
+                    {row.duplicateKind && <div className="tag tag--warn">Duplicata {row.duplicateKind}{row.intraFileDuplicate ? ' no arquivo' : ''}</div>}
                     {row.installmentTotal && <div className="tag">{row.installmentCurrent}/{row.installmentTotal}</div>}
                     {row.isRecurring && <div className="tag tag--good">Recorrente</div>}
                     {row.categoryConfidence === 'unknown' && <div className="tag">Categoria incerta</div>}
                     {row.isStatementMeta && <div className="tag">Meta da fatura</div>}
+                    {row.duplicateKind === 'exact' && (
+                      <label className="muted small" style={{ display: 'block', marginTop: 6 }}>
+                        <input
+                          type="checkbox"
+                          checked={Boolean(row.allowDuplicate)}
+                          onChange={(e) => patch(row, { allowDuplicate: e.target.checked, include: e.target.checked })}
+                        />{' '}
+                        É outra compra
+                      </label>
+                    )}
                     <div className="muted small">{TRANSACTION_TYPES.find((t) => t.id === row.type)?.label}</div>
                     <div className="muted small">{row.date ? formatDate(row.date) : ''}</div>
                   </td>
@@ -114,6 +138,16 @@ export default function ImportReviewPage() {
             </tbody>
           </table>
         </div>
+        {(fileOverrideNeeded || imp.duplicateOf) && (
+          <label style={{ display: 'block', marginTop: 12 }}>
+            <input
+              type="checkbox"
+              checked={allowDuplicateFile}
+              onChange={(e) => setAllowDuplicateFile(e.target.checked)}
+            />{' '}
+            Importar mesmo assim
+          </label>
+        )}
         <div className="toolbar" style={{ marginTop: 12 }}>
           <button type="button" className="btn" disabled={busy || !summary.included} onClick={confirm}>
             Confirmar importação

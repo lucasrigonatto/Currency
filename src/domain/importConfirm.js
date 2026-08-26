@@ -1,5 +1,5 @@
 import { monthKey } from '../lib/dates';
-import { groupKey, installmentStartDate } from './installments';
+import { findMatchingGroup, groupKey, installmentStartDate, purchaseKeyFromCandidate } from './installments';
 import { detectRecurringCandidates } from './recurring';
 import { isConfirmableRow } from './normalize';
 
@@ -26,24 +26,29 @@ export function prepareConfirmPayload(rows, { importId, accountId, installmentGr
   selected.forEach((row) => {
     let installmentGroupId = null;
     if (row.installmentTotal) {
+      const startDate = installmentStartDate(row.date, row.installmentCurrent || 1);
       const candidate = {
         merchant: row.merchant,
         total: row.installmentTotal,
         amountCents: Math.abs(row.amountCents),
         accountId,
+        startDate,
+        startMonth: monthKey(startDate),
       };
       const key = groupKey(candidate);
-      let group = groups.find((g) => g.matchKey === key);
+      const purchaseKey = purchaseKeyFromCandidate(candidate);
+      let group = findMatchingGroup(groups, candidate);
       if (!group) {
         group = {
           id: groupIdForImport(importId, key),
           merchant: row.merchant,
           accountId,
           matchKey: key,
+          purchaseKey,
           totalInstallments: row.installmentTotal,
           installmentAmountCents: Math.abs(row.amountCents),
           totalAmountCents: Math.abs(row.amountCents) * row.installmentTotal,
-          startDate: installmentStartDate(row.date, row.installmentCurrent || 1),
+          startDate,
           paidThrough: row.installmentCurrent || 1,
           createdByImportId: importId,
           sourceImportIds: [importId],
@@ -52,7 +57,10 @@ export function prepareConfirmPayload(rows, { importId, accountId, installmentGr
         groups.push(group);
         groupsToSave.push(group);
       } else {
+        group.matchKey = key;
+        group.purchaseKey = group.purchaseKey || purchaseKey;
         group.paidThrough = Math.max(group.paidThrough || 0, row.installmentCurrent || 0);
+        group.startDate = group.startDate || startDate;
         group.sourceImportIds = [...new Set([...(group.sourceImportIds || []), importId])];
         if (!groupsToSave.some((g) => g.id === group.id)) groupsToSave.push(group);
       }

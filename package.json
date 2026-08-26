@@ -21,7 +21,7 @@
     "postinstall": "node scripts/copy-pdf-worker.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --forceExit",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

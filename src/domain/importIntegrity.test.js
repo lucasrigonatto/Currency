@@ -16,6 +16,7 @@ beforeEach(async () => {
 
 afterAll(async () => {
   await db.delete();
+  await db.close();
 });
 
 function installmentRow(overrides = {}) {
@@ -31,14 +32,15 @@ function installmentRow(overrides = {}) {
   );
 }
 
-async function putReviewingImport(importId, rows) {
+async function putReviewingImport(importId, rows, extra = {}) {
   await db.imports.put({
     id: importId,
-    filename: 'nubank.csv',
+    filename: extra.filename || 'nubank.csv',
     accountId: 'card-nubank',
-    contentHash: `hash-${importId}`,
+    contentHash: extra.contentHash || `hash-${importId}`,
     status: 'reviewing',
     createdAt: new Date().toISOString(),
+    ...extra,
   });
   await db.importRows.bulkPut(rows.map((row) => ({ ...row, id: row.id, importId })));
 }

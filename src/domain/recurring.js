@@ -48,15 +48,20 @@ export function detectRecurringCandidates(transactions) {
   return candidates.sort((a, b) => b.averageCents - a.averageCents);
 }
 
+export function recurringStartMonth(item) {
+  if (!item) return null;
+  return item.startMonth || monthKey(item.date) || monthKey(item.createdAt) || null;
+}
+
 export function expandRecurringForMonth(item, month) {
-  if (!item?.isActive) return [];
+  if (!item || item.isActive === false) return [];
+  const start = recurringStartMonth(item);
   if (item.frequency === 'once') {
-    return monthKey(item.date) === month ? [item] : [];
+    return monthKey(item.date) === month || start === month ? [item] : [];
   }
   if (item.endMonth && item.endMonth < month) return [];
-  if (item.startMonth && item.startMonth > month) return [];
+  if (start && start > month) return [];
   if (item.frequency === 'yearly') {
-    const start = item.startMonth || monthKey(item.date);
     if (!start) return [];
     return start.slice(5) === month.slice(5) ? [item] : [];
   }
