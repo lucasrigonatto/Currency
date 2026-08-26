@@ -12,6 +12,11 @@ export function fromCents(cents) {
   return Number(cents) / 100;
 }
 
+export function formatAmountInput(cents) {
+  if (cents == null || !Number.isFinite(Number(cents))) return '';
+  return (Number(cents) / 100).toFixed(2).replace('.', ',');
+}
+
 export function parseAmountToCents(raw) {
   if (raw == null) return null;
   let s = String(raw).trim().replace(/^["']+|["']+$/g, '');

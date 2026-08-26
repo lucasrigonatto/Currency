@@ -25,12 +25,13 @@ export function currentMonthKey() {
 
 export function addMonths(isoDate, delta) {
   const [y, m, d] = String(isoDate).split('-').map(Number);
-  const date = new Date(y, m - 1 + delta, d || 1);
-  if (d) {
-    const last = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    date.setDate(Math.min(d, last));
-  }
-  return toIsoDate(date);
+  if (!y || !m) return null;
+  const totalMonths = y * 12 + (m - 1) + Number(delta || 0);
+  const year = Math.floor(totalMonths / 12);
+  const monthIndex = ((totalMonths % 12) + 12) % 12;
+  const last = new Date(year, monthIndex + 1, 0).getDate();
+  const day = Math.min(d || 1, last);
+  return `${String(year).padStart(4, '0')}-${String(monthIndex + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
 export function addMonthsKey(key, delta) {
@@ -109,6 +110,8 @@ export function nextNMonths(fromKey, count) {
 
 export function isValidIsoDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return false;
-  const d = new Date(`${value}T00:00:00`);
-  return toIsoDate(d) === value;
+  const [y, m, d] = value.split('-').map(Number);
+  if (m < 1 || m > 12 || d < 1) return false;
+  const last = new Date(y, m, 0).getDate();
+  return d <= last;
 }

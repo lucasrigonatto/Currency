@@ -1,12 +1,26 @@
-import { createId } from '../lib/id';
 import { monthKey } from '../lib/dates';
 import { groupKey, installmentStartDate } from './installments';
 import { detectRecurringCandidates } from './recurring';
+import { isConfirmableRow } from './normalize';
+
+export function transactionIdForImportRow(importId, row) {
+  return `imp:${importId}:${row.id}`;
+}
+
+export function groupIdForImport(importId, matchKey) {
+  return `ig:${importId}:${matchKey}`;
+}
 
 export function prepareConfirmPayload(rows, { importId, accountId, installmentGroups, transactions }) {
-  const selected = rows.filter((row) => row.include && row.parseErrors.length === 0);
-  const groups = [...installmentGroups];
-  const newGroups = [];
+  const claimed = (rows || []).filter((row) => row.include);
+  const invalid = claimed.filter((row) => !isConfirmableRow(row));
+  if (invalid.length) {
+    throw new Error(`Não é possível confirmar: ${invalid.length} linha(s) com data ou valor inválido.`);
+  }
+
+  const selected = claimed.filter(isConfirmableRow);
+  const groups = installmentGroups.map((g) => ({ ...g }));
+  const groupsToSave = [];
   const transactionsToAdd = [];
 
   selected.forEach((row) => {
@@ -22,7 +36,7 @@ export function prepareConfirmPayload(rows, { importId, accountId, installmentGr
       let group = groups.find((g) => g.matchKey === key);
       if (!group) {
         group = {
-          id: createId(),
+          id: groupIdForImport(importId, key),
           merchant: row.merchant,
           accountId,
           matchKey: key,
@@ -31,19 +45,22 @@ export function prepareConfirmPayload(rows, { importId, accountId, installmentGr
           totalAmountCents: Math.abs(row.amountCents) * row.installmentTotal,
           startDate: installmentStartDate(row.date, row.installmentCurrent || 1),
           paidThrough: row.installmentCurrent || 1,
+          createdByImportId: importId,
+          sourceImportIds: [importId],
           createdAt: new Date().toISOString(),
         };
         groups.push(group);
-        newGroups.push(group);
+        groupsToSave.push(group);
       } else {
         group.paidThrough = Math.max(group.paidThrough || 0, row.installmentCurrent || 0);
-        if (!newGroups.some((g) => g.id === group.id)) newGroups.push(group);
+        group.sourceImportIds = [...new Set([...(group.sourceImportIds || []), importId])];
+        if (!groupsToSave.some((g) => g.id === group.id)) groupsToSave.push(group);
       }
       installmentGroupId = group.id;
     }
 
     transactionsToAdd.push({
-      id: createId(),
+      id: transactionIdForImportRow(importId, row),
       date: row.date,
       description: row.description,
       merchant: row.merchant,
@@ -72,7 +89,7 @@ export function prepareConfirmPayload(rows, { importId, accountId, installmentGr
   const combined = [...transactions, ...transactionsToAdd];
   const recurringCandidates = detectRecurringCandidates(combined);
 
-  return { selected, newGroups, transactionsToAdd, recurringCandidates };
+  return { selected, newGroups: groupsToSave, groupsToSave, transactionsToAdd, recurringCandidates };
 }
 
 export function statementPeriod(rows) {

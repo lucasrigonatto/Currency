@@ -16,6 +16,11 @@ db.version(1).stores({
   settings: 'key',
 });
 
+db.version(2).stores({
+  transactions: 'id, date, type, status, accountId, categoryId, subcategoryId, merchant, importId, installmentGroupId, fingerprint, [importId+fingerprint], createdAt',
+  installmentGroups: 'id, merchant, accountId, createdByImportId, totalInstallments',
+});
+
 function flattenCategories(now) {
   const rows = [];
   CATEGORY_TREE.forEach((cat, index) => {

@@ -3,11 +3,13 @@ import { db, loadSnapshot, seedIfEmpty } from '../db';
 import { createId } from '../lib/id';
 import { currentMonthKey } from '../lib/dates';
 import { parseImportFile } from '../import/pipeline';
-import { detectRecurringFlags, prepareConfirmPayload, statementPeriod } from '../domain/importConfirm';
+import { detectRecurringFlags, statementPeriod } from '../domain/importConfirm';
+import { confirmImportInDb, rollbackImportInDb } from '../domain/importPersistence';
 import { findDuplicateImport } from '../domain/duplicates';
 import { suggestedRuleFromCorrection } from '../domain/categorize';
 import { detectRecurringCandidates } from '../domain/recurring';
 import { categoryLookup } from '../domain/aggregates';
+import { revalidateReviewRow } from '../domain/normalize';
 
 const FinanceContext = createContext(null);
 
@@ -315,53 +317,33 @@ export function FinanceProvider({ children }) {
   );
 
   const updateImportRow = useCallback(
-    async (row) => {
-      await db.importRows.put({ ...row, updatedAt: new Date().toISOString() });
+    async (row, patch = {}) => {
+      const next = revalidateReviewRow(row, patch, {
+        rules: snapshot.rules,
+        existingTransactions: snapshot.transactions.filter((t) => t.status !== 'ignored'),
+        accountId: row.accountId,
+      });
+      await db.importRows.put({ ...next, updatedAt: new Date().toISOString() });
       await refresh();
+      return next;
+    },
+    [refresh, snapshot.rules, snapshot.transactions],
+  );
+
+  const confirmImport = useCallback(
+    async (importId) => {
+      const payload = await confirmImportInDb(db, importId);
+      await refresh();
+      return payload;
     },
     [refresh],
   );
 
-  const confirmImport = useCallback(
-    async (importId, rows) => {
-      const imp = snapshot.imports.find((i) => i.id === importId);
-      if (!imp) throw new Error('Importação não encontrada');
-      const payload = prepareConfirmPayload(rows, {
-        importId,
-        accountId: imp.accountId,
-        installmentGroups: snapshot.installmentGroups,
-        transactions: snapshot.transactions,
-      });
-      const now = new Date().toISOString();
-      await db.transaction('rw', db.imports, db.importRows, db.transactions, db.installmentGroups, async () => {
-        if (payload.newGroups.length) await db.installmentGroups.bulkPut(payload.newGroups);
-        if (payload.transactionsToAdd.length) await db.transactions.bulkPut(payload.transactionsToAdd);
-        await db.importRows.where('importId').equals(importId).delete();
-        await db.imports.update(importId, {
-          status: 'confirmed',
-          transactionCount: payload.transactionsToAdd.length,
-          totalCents: payload.transactionsToAdd.reduce((s, t) => s + t.amountCents, 0),
-          confirmedAt: now,
-          updatedAt: now,
-        });
-      });
-      await refresh();
-      return payload;
-    },
-    [refresh, snapshot.imports, snapshot.installmentGroups, snapshot.transactions],
-  );
-
   const rollbackImport = useCallback(
     async (importId) => {
-      await db.transaction('rw', db.imports, db.importRows, db.transactions, async () => {
-        await db.transactions.where('importId').equals(importId).delete();
-        await db.importRows.where('importId').equals(importId).delete();
-        await db.imports.update(importId, {
-          status: 'rolled_back',
-          updatedAt: new Date().toISOString(),
-        });
-      });
+      const result = await rollbackImportInDb(db, importId);
       await refresh();
+      return result;
     },
     [refresh],
   );

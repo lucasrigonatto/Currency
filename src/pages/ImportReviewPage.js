@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFinance } from '../context/FinanceContext';
-import { brlCents, formatDate } from '../lib/format';
+import { formatDate } from '../lib/format';
+import { formatAmountInput } from '../lib/money';
 import { summarizeReview } from '../domain/normalize';
 import { TRANSACTION_TYPES } from '../data/defaults';
 
@@ -17,13 +18,13 @@ export default function ImportReviewPage() {
   if (!imp) return <p>Importação não encontrada.</p>;
 
   async function patch(row, changes) {
-    await updateImportRow({ ...row, ...changes });
+    await updateImportRow(row, changes);
   }
 
   async function confirm() {
     setBusy(true);
     try {
-      const result = await confirmImport(importId, rows);
+      const result = await confirmImport(importId);
       showNotice(`${result.transactionsToAdd.length} transações gravadas.`);
       navigate('/');
     } catch (err) {
@@ -36,7 +37,7 @@ export default function ImportReviewPage() {
   return (
     <>
       <p className="page-lead">
-        Revise antes de salvar. Desmarque duplicatas, corrija categorias e veja linhas que o parser não entendeu.
+        Revise antes de salvar. Corrija data, descrição e valor; linhas inválidas não entram na confirmação.
       </p>
       <div className="metrics">
         <div className="metric"><span className="metric__label">Arquivo</span><strong className="metric__value" style={{ fontSize: '1rem' }}>{imp.filename}</strong></div>
@@ -74,18 +75,26 @@ export default function ImportReviewPage() {
                     />
                   </td>
                   <td>
-                    <input className="input" type="date" value={row.date || ''} onChange={(e) => patch(row, { date: e.target.value, parseErrors: e.target.value ? [] : row.parseErrors })} />
+                    <input className="input" type="date" value={row.date || ''} onChange={(e) => patch(row, { date: e.target.value })} />
                   </td>
                   <td>
-                    <input className="input" value={row.description || ''} onChange={(e) => patch(row, { description: e.target.value, merchant: row.merchant || e.target.value })} />
+                    <input className="input" value={row.description || ''} onChange={(e) => patch(row, { description: e.target.value })} />
                     <div className="muted small">{row.merchant}</div>
                   </td>
-                  <td>{row.amountCents == null ? '—' : brlCents(row.amountCents)}</td>
+                  <td>
+                    <input
+                      className="input"
+                      inputMode="decimal"
+                      value={row.amountText != null ? row.amountText : formatAmountInput(row.amountCents)}
+                      onChange={(e) => patch(row, { amountText: e.target.value })}
+                      placeholder="0,00"
+                    />
+                  </td>
                   <td>
                     <select className="select" value={row.categoryId || 'other'} onChange={(e) => patch(row, { categoryId: e.target.value, categoryConfidence: 'manual' })}>
                       {categories.filter((c) => !c.parentId).map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select>
-                    <select className="select" value={row.subcategoryId || ''} onChange={(e) => patch(row, { subcategoryId: e.target.value })}>
+                    <select className="select" value={row.subcategoryId || ''} onChange={(e) => patch(row, { subcategoryId: e.target.value, categoryConfidence: 'manual' })}>
                       <option value="">—</option>
                       {cats.childrenOf(row.categoryId).map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
                     </select>

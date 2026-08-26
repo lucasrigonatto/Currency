@@ -88,3 +88,50 @@ export function isFixedExpense(tx) {
   if (tx.isRecurring || tx.installmentGroupId) return true;
   return ['housing', 'subscriptions', 'financial'].includes(tx.categoryId);
 }
+
+export function syncGroupsAfterRemovedTransactions({
+  groups,
+  remainingTransactions,
+  removedTransactions,
+  removedImportId,
+}) {
+  const remainingByGroup = new Map();
+  remainingTransactions.forEach((tx) => {
+    if (!tx.installmentGroupId) return;
+    if (!remainingByGroup.has(tx.installmentGroupId)) remainingByGroup.set(tx.installmentGroupId, []);
+    remainingByGroup.get(tx.installmentGroupId).push(tx);
+  });
+
+  const touchedIds = new Set(
+    (removedTransactions || [])
+      .map((tx) => tx.installmentGroupId)
+      .filter(Boolean),
+  );
+
+  const toDelete = [];
+  const toUpdate = [];
+
+  groups.forEach((group) => {
+    const originatedHere = group.createdByImportId === removedImportId;
+    const sourcedHere = (group.sourceImportIds || []).includes(removedImportId);
+    const touched = originatedHere || sourcedHere || touchedIds.has(group.id);
+    if (!touched) return;
+
+    const txs = remainingByGroup.get(group.id) || [];
+    if (txs.length === 0) {
+      toDelete.push(group.id);
+      return;
+    }
+
+    const paidThrough = Math.max(0, ...txs.map((t) => Number(t.installmentCurrent) || 0));
+    const anchor = txs.slice().sort((a, b) => (a.installmentCurrent || 0) - (b.installmentCurrent || 0))[0];
+    toUpdate.push({
+      ...group,
+      paidThrough,
+      startDate: installmentStartDate(anchor.date, anchor.installmentCurrent || 1),
+      sourceImportIds: (group.sourceImportIds || []).filter((id) => id !== removedImportId),
+    });
+  });
+
+  return { toDelete, toUpdate };
+}

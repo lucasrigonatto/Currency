@@ -1,5 +1,5 @@
-import { parseAmountToCents } from '../lib/money';
-import { parseFlexibleDate } from '../lib/dates';
+import { formatAmountInput, parseAmountToCents } from '../lib/money';
+import { isValidIsoDate, parseFlexibleDate } from '../lib/dates';
 import { looksLikeStatementMeta, merchantFromDescription } from '../lib/text';
 import { parseInstallment } from './installments';
 import { categorizeRecord } from './categorize';
@@ -38,8 +38,9 @@ export function normalizeParsedRow(row, { rules, existingTransactions, accountId
   const amountCents = parseAmountToCents(row.amount);
   const description = String(row.description || row.raw || '').trim();
   const errors = [];
-  if (!date) errors.push('Data inválida');
-  if (amountCents == null) errors.push('Valor inválida');
+  if (!date || !isValidIsoDate(date)) errors.push('Data inválida');
+  if (amountCents == null || !Number.isFinite(amountCents)) errors.push('Valor inválido');
+  if (amountCents === 0) errors.push('Valor inválido');
   if (!description) errors.push('Descrição vazia');
 
   const installment = parseInstallment(description);
@@ -77,6 +78,62 @@ export function normalizeParsedRow(row, { rules, existingTransactions, accountId
     parseErrors: errors,
     include: errors.length === 0 && !isStatementMeta && !(duplicate.kind === 'exact'),
     source: row.source || 'import',
+    amountText: row.amountText != null ? row.amountText : formatAmountInput(amountCents),
+  };
+}
+
+export function isConfirmableRow(row) {
+  if (!row?.include) return false;
+  if (row.parseErrors?.length) return false;
+  if (!isValidIsoDate(row.date)) return false;
+  if (!Number.isFinite(row.amountCents) || row.amountCents === 0) return false;
+  if (!String(row.description || '').trim()) return false;
+  return true;
+}
+
+export function revalidateReviewRow(row, patch, context) {
+  const merged = { ...row, ...patch };
+  const amountText = patch.amountText != null ? patch.amountText : merged.amountText != null ? merged.amountText : formatAmountInput(merged.amountCents);
+  const normalized = normalizeParsedRow(
+    {
+      date: merged.date,
+      description: merged.description,
+      merchant: patch.merchant,
+      amount: amountText,
+      amountText,
+      raw: merged.raw,
+      notes: merged.notes,
+      source: merged.source || 'import',
+    },
+    context,
+  );
+
+  const manualCategory = merged.categoryConfidence === 'manual' || patch.categoryId || patch.subcategoryId;
+  if (manualCategory && (merged.categoryId || patch.categoryId)) {
+    normalized.categoryId = patch.categoryId || merged.categoryId;
+    normalized.subcategoryId = patch.subcategoryId !== undefined ? patch.subcategoryId : merged.subcategoryId;
+    normalized.categoryConfidence = 'manual';
+  }
+
+  let include;
+  if (normalized.parseErrors.length) {
+    include = false;
+  } else if (patch.include !== undefined) {
+    include = Boolean(patch.include) && !normalized.isStatementMeta && normalized.duplicateKind !== 'exact';
+  } else if (normalized.isStatementMeta || normalized.duplicateKind === 'exact') {
+    include = false;
+  } else {
+    include = merged.include !== false;
+  }
+
+  return {
+    ...normalized,
+    id: row.id,
+    importId: row.importId,
+    status: include ? 'pending' : 'skipped',
+    include,
+    amountText,
+    notes: merged.notes || '',
   };
 }
 
