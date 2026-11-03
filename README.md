@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Currency
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A focused currency converter built with React. Pick two currencies, enter an amount, and see the conversion using the latest daily reference rate.
 
-## Available Scripts
+![Currency converter showing a real daily reference rate.](docs/screenshots/converter.png)
 
-In the project directory, you can run:
+Currency converter showing a real daily reference rate.
 
-### `yarn start`
+## What problem did I solve?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I wanted a quick way to understand an amount in another currency without working out the conversion myself. The interface keeps the amount, currency pair, result, and rate date together, so the number has context.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What the app does
 
-### `yarn test`
+- Converts between USD, EUR, BRL, GBP, CAD, AUD, JPY, CHF, CNY, and INR.
+- Updates the result as the amount changes without requesting the same rate again.
+- Swaps the selected currencies and handles same-currency conversions locally.
+- Shows loading, invalid-input, and network-error states with a retry action.
+- Uses the free [Frankfurter v2 API](https://frankfurter.dev/), with no API key.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How do I know my solution works?
 
-### `yarn build`
+Five automated tests check conversion arithmetic, zero and invalid amounts, swapping currencies, the same-currency case, and recovery after a failed request. The tests mock the provider so they are repeatable. The production build also passes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+GitHub Actions runs these checks on pushes and pull requests. A passing test suite checks the app's behavior; it does not guarantee that the external rate provider is always available.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Run locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Requires Node.js 22 and npm.
 
-### `yarn eject`
+```bash
+npm ci
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Open http://localhost:3000.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm test -- --watchAll=false --runInBand
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The production files are written to `build/`. The configured public path is `/Currency/`; set `PUBLIC_URL=/` when building for a domain root.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Technical choices and limits
 
-## Learn More
+React manages the form and request state. A separate rate client validates HTTP responses and rate values. Requests are cancelled logically when the selected pair changes, so an older response cannot replace the current result.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+These are daily reference rates, not live trading or bank transaction quotes. Fees and spreads are not included. The app does not store personal or transaction data. The project currently uses the legacy Create React App toolchain; migrating the build tooling is a separate maintenance task.
