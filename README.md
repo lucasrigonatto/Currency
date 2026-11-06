@@ -12,7 +12,8 @@ I wanted a quick way to understand an amount in another currency without working
 
 ## What the app does
 
-- Converts between USD, EUR, BRL, GBP, CAD, AUD, JPY, CHF, CNY, and INR.
+- Converts between USD, EUR, BRL, GBP, CAD, AUD, JPY, CHF, CNY, INR, MXN, and ARS.
+- Shows the rate in both directions.
 - Updates the result as the amount changes without requesting the same rate again.
 - Swaps the selected currencies and handles same-currency conversions locally.
 - Shows loading, invalid-input, and network-error states with a retry action.

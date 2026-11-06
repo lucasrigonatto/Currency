@@ -9,6 +9,8 @@ export const currencies = [
   ["CHF", "Swiss franc"],
   ["CNY", "Chinese yuan"],
   ["INR", "Indian rupee"],
+  ["MXN", "Mexican peso"],
+  ["ARS", "Argentine peso"],
 ];
 export async function fetchRate(base, quote) {
   const response = await fetch(

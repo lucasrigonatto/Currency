@@ -159,6 +159,15 @@ export default function App() {
               {data.rate.toLocaleString("en-US", { maximumFractionDigits: 6 })}{" "}
               {quote}
             </p>
+            {data.rate > 0 && base !== quote && (
+              <p>
+                1 {quote} ={" "}
+                {(1 / data.rate).toLocaleString("en-US", {
+                  maximumFractionDigits: 6,
+                })}{" "}
+                {base}
+              </p>
+            )}
             <small>
               {data.date
                 ? "Reference date: " + data.date
@@ -172,8 +181,8 @@ export default function App() {
           <span>01</span>
           <h3>Choose your pair</h3>
           <p>
-            Ten commonly used currencies, including the US dollar, euro, and
-            Brazilian real.
+            Twelve commonly used currencies, including the US dollar, euro,
+            and Brazilian real.
           </p>
         </div>
         <div>
